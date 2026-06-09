@@ -3,7 +3,7 @@ class Pastedeck < Formula
   homepage "https://github.com/EmirOzzturk/PasteDeck"
   url "https://github.com/EmirOzzturk/PasteDeck.git",
       tag:      "v2.1",
-      revision: "20e24e8e591b41302a0ef6c858fd3167e090843f"
+      revision: "20e24e83896cff1896f1c0d99ac4d5f9c55e2320"
   license "MIT"
   head "https://github.com/EmirOzzturk/PasteDeck.git", branch: "main"
 
