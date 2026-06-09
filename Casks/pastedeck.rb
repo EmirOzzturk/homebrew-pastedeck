@@ -11,9 +11,10 @@ cask "pastedeck" do
 
   app "PasteDeck.app"
 
-  def postflight
-    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/PasteDeck.app"]
-    system_command "/usr/bin/codesign", args: ["--force", "--deep", "-s", "-", "#{appdir}/PasteDeck.app"]
+  postflight do
+    app_path = "#{appdir}/PasteDeck.app"
+    system_command "/usr/bin/xattr", args: ["-cr", app_path]
+    system_command "/usr/bin/codesign", args: ["--force", "--deep", "-s", "-", app_path]
   end
 
   zap trash: [
