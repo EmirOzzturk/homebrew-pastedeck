@@ -11,6 +11,11 @@ cask "pastedeck" do
 
   app "PasteDeck.app"
 
+  def postflight
+    system_command "/usr/bin/xattr", args: ["-cr", "#{appdir}/PasteDeck.app"]
+    system_command "/usr/bin/codesign", args: ["--force", "--deep", "-s", "-", "#{appdir}/PasteDeck.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/PasteDeck",
   ]
@@ -18,8 +23,5 @@ cask "pastedeck" do
   caveats <<~EOS
     On first launch, grant Accessibility permission in:
     System Settings → Privacy & Security → Accessibility
-
-    If macOS blocks the app:
-      xattr -cr /Applications/PasteDeck.app
   EOS
 end
